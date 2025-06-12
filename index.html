@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Beautiful Daily Schedule</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>My Daily Schedule</h1>
+
+        <div class="main-content">
+            <div class="clock-area">
+                <div class="clock-wrapper">
+                    <canvas id="scheduleClock"></canvas>
+                    <div class="clock-labels">
+                    </div>
+                    <div class="current-time-marker"></div>
+                    <div class="center-content">
+                        <!-- Kode ikon kucing SVG yang lebih jelas telah ditambahkan di sini -->
+                        <!-- Ini adalah ikon kucing tidur yang lebih jelas, diadaptasi dari open-source SVG -->
+                        <svg class="cat-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="currentColor" style="color: #6a0dad;">
+                            <path d="M50 5C25.147 5 5 25.147 5 50s20.147 45 45 45 45-20.147 45-45S74.853 5 50 5zm0 84C30.654 89 15 73.346 15 50S30.654 11 50 11s35 15.654 35 39-15.654 39-35 39z"/>
+                            <!-- Kepala/Bentuk Utama -->
+                            <circle cx="37" cy="40" r="8"/>
+                            <!-- Mata kiri -->
+                            <circle cx="63" cy="40" r="8"/>
+                            <!-- Mata kanan -->
+                            <path d="M50 55a5 5 0 01-5-5h10a5 5 0 01-5 5z"/>
+                            <!-- Hidung -->
+                            <path d="M50 60c-8 0-15 5-15 10h30c0-5-7-10-15-10z"/>
+                            <!-- Mulut/Senyum (sedikit datar untuk tidur) -->
+                            <path d="M25 25c-5 0-10 2-10 5s5 5 10 5 10-2 10-5-5-5-10-5z"/>
+                            <!-- Telinga kiri -->
+                            <path d="M75 25c5 0 10 2 10 5s-5 5-10 5-10-2-10-5 5-5 10-5z"/>
+                            <!-- Telinga kanan -->
+                            <line x1="40" y1="50" x2="30" y2="55" stroke="currentColor" stroke-width="2"/>
+                            <line x1="60" y1="50" x2="70" y2="55" stroke="currentColor" stroke-width="2"/>
+                            <!-- Kumis sederhana -->
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="unit-info">
+                    UNIT <br> DAY HOUR MINUTE
+                </div>
+            </div>
+
+            <div class="schedule-control">
+                <h2>Manage Activities</h2>
+                <form id="activityForm">
+                    <input type="hidden" id="activityIndex" value="-1">
+                    <div class="form-group">
+                        <label for="activityName">Activity Name:</label>
+                        <input type="text" id="activityName" placeholder="e.g., Tidur, Kerja" required>
+                    </div>
+
+                    <div class="form-group time-inputs">
+                        <div>
+                            <label for="startTime">Start Time:</label>
+                            <input type="time" id="startTime" required>
+                        </div>
+                        <div>
+                            <label for="endTime">End Time:</label>
+                            <input type="time" id="endTime" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" id="saveActivityBtn" class="action-btn primary-btn">Add Activity</button>
+                        <button type="button" id="deleteActivityBtn" class="action-btn delete-btn" style="display: none;">Delete</button>
+                        <button type="button" id="cancelEditBtn" class="action-btn secondary-btn" style="display: none;">Cancel</button>
+                    </div>
+                </form>
+
+                <div class="activity-list-container">
+                    <h3>Current Activities</h3>
+                    <ul id="activityList">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
